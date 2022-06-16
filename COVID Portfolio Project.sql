@@ -122,7 +122,7 @@ where dea.continent is not Null
 Select *, (VaccinatedPeople_Rolling_count/population)* 100 as VaccinatedPeoplePercentage
 from #PercentageVaccinatedPeople
 
---Creating a View 
+--Creating a View to store data for later visualizations
 Create View PercentageVaccinatedPeopleView as
 Select dea.continent,dea.location, dea.date, dea.population, vac.new_vaccinations 
 , SUM(CONVERT(int,vac.new_vaccinations)) OVER (Partition by dea.location Order by dea.location,
